@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 function SearchBox({ searchValue, setSearchValue})  {
     return (
         <div className="flex justify-center">
