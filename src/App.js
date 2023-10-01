@@ -7,11 +7,11 @@ import './App.css';
 
 const listaTODOs = []
 listaTODOs.push({text: 'Cortar cebolla', completed: true})
+listaTODOs.push({text: 'Sacar el perro', completed: false})
 function App() {
   return (
     <>
-      <h1>Todo App</h1>
-      <TodoCounter completed={12} total={156}/>
+      <TodoCounter completed={completados(listaTODOs)} total={listaTODOs.length}/>
       <SearchBox />
 
       <TodoList>
@@ -30,6 +30,14 @@ function App() {
   );
 }
 
-
+function completados(listaTODOs){
+  let completados = 0
+  listaTODOs.forEach(todo => {
+    if(todo.completed){
+      completados++
+    }
+  })
+  return completados
+}
 
 export default App;

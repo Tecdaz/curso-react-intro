@@ -1,6 +1,8 @@
 function SearchBox()  {
     return (
-        <input className="bg-zinc-100 rounded-sm border-2 border-solid border-neutral-950 mx-6 w-9/12 text-2xl text-center font-normal text-neutral-950 shadow-xl placeholder:text-neutral-600 placeholder:font-normal focus:outline-sky-700" type="text" placeholder="Hacer la comida"/>
+        <div className="flex justify-center">
+            <input className="shadow-[0_5px_50px_0_rgba(32,35,41,0.25)] bg-zinc-100 rounded-md border-2 border-neutral-950 border-solid w-9/12 text-center font-normal h-16 text-2xl focus:border-sky-400" type="text" placeholder="Hacer la comida"/>
+        </div>
     );
 }
 
