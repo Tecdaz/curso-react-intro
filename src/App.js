@@ -9,16 +9,35 @@ import './App.css';
 
 
 function App() {
-  const [todos, setTodos] = React.useState([{text:'hola mundo', completed:true}]);
+  // States
+  const [todos, setTodos] = React.useState([{ text: 'hola mundo', completed: true }]);
   const [searchValue, setSearchValue] = React.useState('');
-
+  // Filtered todos
   const completedTodos = todos.filter(todo => !!todo.completed);
-  const todosFiltered = todos.filter(todo => todo.text.toLowerCase().includes(searchValue.toLowerCase()));
-  console.log(searchValue);
+  const todosFiltered = todos.filter(todo => todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
+
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+
+    const todoIndex = newTodos.findIndex(todo => todo.text === text);
+
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    setTodos(newTodos)
+  }
+
+  const deleteTodo = (text) => {
+    const newTodos = [...todos];
+
+    const todoIndex = newTodos.findIndex(todo => todo.text === text);
+
+    newTodos.splice(todoIndex, 1)
+    setTodos(newTodos)
+  }
+
   return (
     <>
-      <TodoCounter completed={completedTodos.length} total={todos.length}/>
-      <SearchBox 
+      <TodoCounter completed={completedTodos.length} total={todos.length} />
+      <SearchBox
         searchValue={searchValue}
         setSearchValue={setSearchValue}
       />
@@ -26,27 +45,19 @@ function App() {
       <TodoList>
         {todosFiltered.map(todo => (
           <TodoItem key={todo.text}
-                    text={todo.text} 
-                    completed={todo.completed} 
+            text={todo.text}
+            completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
           />
 
         ))}
       </TodoList>
 
       <AddItemButton />
-      
+
     </>
   );
-}
-
-function completados(listaTODOs){
-  let completados = 0
-  listaTODOs.forEach(todo => {
-    if(todo.completed){
-      completados++
-    }
-  })
-  return completados
 }
 
 export default App;
