@@ -5,23 +5,28 @@ import { AddItemButton } from './AddItemButton';
 import { TodoItem } from './TodoItem';
 import './App.css';
 
-
+const listaTODOs = []
+listaTODOs.push({text: 'Cortar cebolla', completed: true})
 function App() {
   return (
-    <div className="flex flex-col justify-center items-center h-screen w-screen">
+    <>
       <h1>Todo App</h1>
-      <TodoCounter />
+      <TodoCounter completed={12} total={156}/>
       <SearchBox />
 
       <TodoList>
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
+        {listaTODOs.map(todo => (
+          <TodoItem key={todo.text}
+                    text={todo.text} 
+                    completed={todo.completed} 
+          />
+
+        ))}
       </TodoList>
 
       <AddItemButton />
       
-    </div>
+    </>
   );
 }
 
