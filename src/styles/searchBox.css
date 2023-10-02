@@ -1,0 +1,23 @@
+.search-box {
+    background-color: #F9FBFC;
+    width: 75%;
+    height: 64px;
+    margin: 0 24px;
+    text-align: center;
+    border-radius: 2px;
+    border: 2px solid #1E1e1f;
+    box-shadow: 0px 5px 50px 0px rgba(32, 35, 41, 0.25);
+
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.search-box::placeholder {
+    color: #A5A5A5;
+}
+
+.search-box:focus {
+    outline-color: #1659d4;
+}

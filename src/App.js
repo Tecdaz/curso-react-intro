@@ -4,7 +4,7 @@ import { SearchBox } from './SearchBox';
 import { TodoList } from './TodoList';
 import { AddItemButton } from './AddItemButton';
 import { TodoItem } from './TodoItem';
-import './App.css';
+import './styles/App.css'
 
 
 
