@@ -9,9 +9,33 @@ import './styles/App.css'
 
 
 function App() {
+  function useLocalStorage(itemName, initialValue) {
+    const localData = localStorage.getItem(itemName);
+    let parsedData;
+    if (localData) {
+      parsedData = JSON.parse(localData);
+    }else{
+      localStorage.setItem(itemName, JSON.stringify(initialValue));
+      parsedData = initialValue;
+    }
+
+    const [item, setItem] = React.useState(parsedData);
+    
+    const saveItem = (newItem) => {
+      localStorage.setItem(itemName, JSON.stringify(newItem));
+      setItem(newItem);
+    }
+
+    return [item, saveItem]
+  }
+
+
+
   // States
-  const [todos, setTodos] = React.useState([{ text: 'hola mundo', completed: true }]);
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', [])
+
   const [searchValue, setSearchValue] = React.useState('');
+
   // Filtered todos
   const completedTodos = todos.filter(todo => !!todo.completed);
   const todosFiltered = todos.filter(todo => todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
@@ -22,7 +46,7 @@ function App() {
     const todoIndex = newTodos.findIndex(todo => todo.text === text);
 
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-    setTodos(newTodos)
+    saveTodos(newTodos)
   }
 
   const deleteTodo = (text) => {
@@ -31,7 +55,14 @@ function App() {
     const todoIndex = newTodos.findIndex(todo => todo.text === text);
 
     newTodos.splice(todoIndex, 1)
-    setTodos(newTodos)
+    saveTodos(newTodos)
+  }
+// eslint-disable-next-line
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({text: text, completed:false})
+
+    saveTodos(newTodos)
   }
 
   return (
