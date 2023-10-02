@@ -1,5 +1,5 @@
 import { RiAddCircleFill } from "react-icons/ri";
-import "./styles/AddItemButton.css";
+import "./AddItemButton.css";
 function AddItemButton() {
   return (
     <RiAddCircleFill className="button-add"/>

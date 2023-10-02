@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/TodoItem.css";
+import "./TodoItem.css";
 
 import { AiFillCheckCircle, AiFillDelete } from "react-icons/ai";
 function TodoItem(props){
