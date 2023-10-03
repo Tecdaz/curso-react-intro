@@ -6,7 +6,12 @@ import { AppUI } from './AppUI';
 
 function App() {
   // States
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', [])
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage('TODOS_V1', [])
   const [searchValue, setSearchValue] = React.useState('');
 
   // Filtered todos
@@ -40,6 +45,8 @@ function App() {
 
   return (
     <AppUI 
+    loading = {loading}
+    error = {error}
     completedTodos={completedTodos}
     todos={todos}
     searchValue={searchValue}
