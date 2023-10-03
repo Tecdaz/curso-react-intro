@@ -8,7 +8,7 @@ function TodoItem(props){
         <AiFillCheckCircle 
         className={`icon-check ${props.completed && "icon-check__active"}`}
         onClick={props.onComplete}/>
-        <p>{props.text}</p>
+        <p className="todo-item--p">{props.text}</p>
         <AiFillDelete className="icon-delete"
         onClick={props.onDelete}/>
       </li>

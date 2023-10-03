@@ -22,7 +22,7 @@ li {
     background-color: rgba(1, 190, 1, 0.1);
 }
 
-p {
+.todo-item--p {
     margin: 24px 0 24px 24px;
     background-color: transparent;
     width: calc(100% - 120px);
