@@ -2,7 +2,7 @@ import React from 'react'
 import './TodosLoading.css'
 
 function TodosLoading(){
-    return <span class="loader"></span>
+    return <span className="loader"></span>
 }
 
 export { TodosLoading }

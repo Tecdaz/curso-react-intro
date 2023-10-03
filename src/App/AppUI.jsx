@@ -10,38 +10,36 @@ import { EmptyTodos } from '../EmptyTodos';
 import { TodoContext } from '../TodoContext';
 
 function AppUI() {
+    const {
+      loading,
+      error,
+      searchValue,
+      todosFiltered,
+      completeTodo,
+      deleteTodo,
+      todos,
+    } = React.useContext(TodoContext)
     return (
       <>
         <TodoCounter />
         <SearchBox />
-        <TodoContext.Consumer>
-          {({
-            loading,
-            error,
-            searchValue,
-            todosFiltered,
-            completeTodo,
-            deleteTodo,
-            todos,
-          })=>(
-              <TodoList>
-                {loading && !error && <TodosLoading />}
-                {error && <TodosError />}
-                {searchValue.length === 0 && todos.length === 0 && !loading && <EmptyTodos />}
-                {searchValue.length > 0 && todosFiltered.length === 0 && <p>¡No hay TODOs que coincidan!</p>}
+        <TodoList>
+          {loading && !error && <TodosLoading />}
+          {error && <TodosError />}
+          {searchValue.length === 0 && todos.length === 0 && !loading && <EmptyTodos />}
+          {searchValue.length > 0 && todosFiltered.length === 0 && <p>¡No hay TODOs que coincidan!</p>}
 
-                {todosFiltered.map(todo => (
-                  <TodoItem 
-                    key={todo.text}
-                    text={todo.text}
-                    completed={todo.completed}
-                    onComplete={() => completeTodo(todo.text)}
-                    onDelete={() => deleteTodo(todo.text)}
-                  />
-                ))}
-              </TodoList>
-          )}
-        </TodoContext.Consumer>
+          {todosFiltered.map(todo => (
+            <TodoItem 
+              key={todo.text}
+              text={todo.text}
+              completed={todo.completed}
+              onComplete={() => completeTodo(todo.text)}
+              onDelete={() => deleteTodo(todo.text)}
+            />
+          ))}
+        </TodoList>
+   
         <AddItemButton />
       </>
     );
