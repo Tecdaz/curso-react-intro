@@ -7,7 +7,7 @@ function SearchBox()  {
         <input
             className="search-box"
             type="text" 
-            placeholder="Hacer la comida"
+            placeholder="Buscar TODOs"
             value={searchValue}
             onChange={(event) => {
                 setSearchValue(event.target.value);

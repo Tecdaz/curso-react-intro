@@ -3,8 +3,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 90%;
-    max-width: 300px;
+    margin-top: 96px;
+    width: 70%;
+    max-width: calc(768px*0.7);
     padding: 32px 40px;
     background-color: white;
 }
@@ -70,5 +71,14 @@ textarea:focus{
 .todoForm-button--cancel:hover {
     background-color: gray;
     color: white;
+}
+
+.todo-form-textarea--error {
+    background-color: rgba(246, 65, 65, 0.346);
+    border-color:red;
+}
+
+.todo-form-textarea--error::placeholder{
+    color: red;
 }
 

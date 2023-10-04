@@ -4,7 +4,13 @@ import { TodoContext } from '../TodoContext';
 
 function TodoCounter()  {
     const {todos, completedTodos } = React.useContext(TodoContext);
-    if (todos.length === completedTodos.length) {
+    if (todos.length === 0) {
+        return (
+            <h2 className="counter">
+                Añade tu primer TODO 🗒️
+            </h2>)
+    }
+    if(todos.length === completedTodos.length) {
         return (
         <h2 className="counter">
             Has completado todas tus tareas 🎊
